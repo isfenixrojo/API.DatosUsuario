@@ -14,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConnectionDB", "ConnectionD
 		DatosUsuarios.sql = DatosUsuarios.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Collection", "Collection", "{342F0581-7E9D-4AB1-A085-06528840D695}"
+	ProjectSection(SolutionItems) = preProject
+		API Datos Usuarios.postman_collection.json = API Datos Usuarios.postman_collection.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

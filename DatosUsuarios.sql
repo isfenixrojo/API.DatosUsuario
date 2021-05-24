@@ -28,10 +28,10 @@ INSERT INTO Areas VALUES ('Recursos Humanos', 1)
 INSERT INTO Areas VALUES ('Mantenimiento', 1)
 INSERT INTO Areas VALUES ('Consiliacion', 1)
 GO
-INSERT INTO Usuarios VALUES ('Antonio Vazquez', 1,1)
+INSERT INTO Usuarios VALUES ('Antonio Jimenez', 1,1)
 INSERT INTO Usuarios VALUES ('Camila Gomes', 5,1)
-INSERT INTO Usuarios VALUES ('Raul Hernandez', 2,1)
-INSERT INTO Usuarios VALUES ('Angela Gomez', 3,1)
+INSERT INTO Usuarios VALUES ('Raul Perez', 2,1)
+INSERT INTO Usuarios VALUES ('Angela Villa', 3,1)
 INSERT INTO Usuarios VALUES ('Maria Gutierrez', 4,1)
 INSERT INTO Usuarios VALUES ('Simon Rodriguez', 6,1)
 GO

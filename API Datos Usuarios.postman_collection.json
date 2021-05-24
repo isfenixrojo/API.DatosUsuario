@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "c314b679-81ff-42eb-ab93-793b04793284",
+		"name": "API Datos Usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Areas",
+			"item": [
+				{
+					"name": "Get Areas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUri}}/areas",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Areas Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUri}}/areas/3",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"areas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Areas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreArea\": \"Control de Calidad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUri}}/areas",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Area",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idAreas\": 6,\r\n    \"nombreArea\": \"Ventas\",\r\n    \"activo\": 1 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUri}}/areas",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"areas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Select Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUri}}/usuarios",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Usuario Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NombreUsuario\": \"Macario Benitez\",\r\n    \"IdAreas\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUri}}/usuarios",
+							"host": [
+								"{{baseUri}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUri",
+			"value": "https://localhost:44362/api"
+		}
+	]
+}
