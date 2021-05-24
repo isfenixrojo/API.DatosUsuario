@@ -6,6 +6,7 @@ using DatosUsuario.Models.DTO;
 using DatosUsuario.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DatosUsuario.API.Controllers
 {
@@ -14,34 +15,34 @@ namespace DatosUsuario.API.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly IUsuariosRepository _repository;
+        private readonly ILogger<UsuariosController> _logger;
 
-        public UsuariosController(IUsuariosRepository repository)
+        public UsuariosController(IUsuariosRepository repository, ILogger<UsuariosController> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetUsuarios()
         {
             var usuarios = await _repository.GetUsuarios();
-            /*if (usuarios.Codigo == 500)
+            if (usuarios.Codigo != 200)
             {
-                Log.Error(usuarios.Respuesta);
+                _logger.LogError($"Codigo: {usuarios.Codigo}, " + $"Mensaje: Problemas en {nameof(GetUsuarios)}, {usuarios.Respuesta}");
+
             }
-            Log.Information(usuarios.Respuesta);*/
             return Ok(usuarios);
         }
 
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetUsuarioID(int Id)
+        public async Task<IActionResult> GetUsuarioId(int Id)
         {
             var usuario = await _repository.GetUsuariosId(Id);
-            /*if (usuario.Codigo == 500)
+            if (usuario.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {usuario.Codigo}, " + $"Mensaje: Problemas en {nameof(GetUsuarioId)}, {usuario.Respuesta}");
             }
-            Log.Information(usuario.Respuesta); */
-
             return Ok(usuario);
         }
 
@@ -49,24 +50,21 @@ namespace DatosUsuario.API.Controllers
         public async Task<IActionResult> PostUsuario([FromBody] Usuarios dato)
         {
             var usuario = await _repository.PostUsuario(dato);
-            /*if (usuario.Codigo == 500)
+            if (usuario.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {usuario.Codigo}, " + $"Mensaje: Problemas en {nameof(PostUsuario)}, {usuario.Respuesta}");
             }
-            Log.Information(usuario.Respuesta);*/
             return Ok(usuario);
         }
-
 
         [HttpPut]
         public async Task<IActionResult> PutUsuario(Usuarios dato)
         {
             var usuario = await _repository.PutUsuario(dato);
-            /*if (usuario.Codigo == 500)
+            if (usuario.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {usuario.Codigo}, " + $"Mensaje: Problemas en {nameof(PutUsuario)}, {usuario.Respuesta}");
             }
-            Log.Information(usuario.Respuesta);*/
             return Ok(usuario);
         }
     }

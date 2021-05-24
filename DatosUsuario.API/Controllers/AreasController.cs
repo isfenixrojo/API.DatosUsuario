@@ -6,6 +6,7 @@ using DatosUsuario.Models.DTO;
 using DatosUsuario.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DatosUsuario.API.Controllers
 {
@@ -14,59 +15,56 @@ namespace DatosUsuario.API.Controllers
     public class AreasController : ControllerBase
     {
         private readonly IAreasRepository _repository;
+        private readonly ILogger<AreasController> _logger;
 
-        public AreasController(IAreasRepository repository)
+        public AreasController(IAreasRepository repository, ILogger<AreasController> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
         [HttpGet]
         public async Task<IActionResult> GetAreas()
         {
-            var getArea = await _repository.GetAreas();
-            /*if (usuarios.Codigo == 500)
+            var areas = await _repository.GetAreas();
+            if (areas.Codigo != 200)
             {
-                Log.Error(usuarios.Respuesta);
+                _logger.LogError($"Codigo: {areas.Codigo}, " + $"Mensaje: Problemas en {nameof(GetAreas)}, {areas.Respuesta}");
             }
-            Log.Information(usuarios.Respuesta);*/
-            return Ok(getArea);
+            return Ok(areas);
         }
 
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetAreaID(int Id)
         {
-            var getArea = await _repository.GetAreaID(Id);
-            /*if (usuario.Codigo == 500)
+            var area = await _repository.GetAreaID(Id);
+            if (area.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {area.Codigo}, " + $"Mensaje:Problemas en {nameof(GetAreaID)}, {area.Respuesta}");
             }
-            Log.Information(usuario.Respuesta); */
-
-            return Ok(getArea);
+            return Ok(area);
         }
 
         [HttpPost]
         public async Task<IActionResult> PostArea([FromBody] Areas area)
         {
-            var postArea = await _repository.PostArea(area);
-            /*if (usuario.Codigo == 500)
+            var areas = await _repository.PostArea(area);
+            if (areas.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {areas.Codigo}, " + $"Mensaje: Problemas en {nameof(PostArea)}, {areas.Respuesta}");
             }
-            Log.Information(usuario.Respuesta);*/
-            return Ok(postArea);
+            return Ok(areas);
         }
 
 
         [HttpPut]
         public async Task<IActionResult> PutArea(Areas area)
         {
-            var putArea = await _repository.PutArea(area);
-            /*if (usuario.Codigo == 500)
+            var areas = await _repository.PutArea(area);
+            if (areas.Codigo != 200)
             {
-                Log.Error(usuario.Respuesta);
+                _logger.LogError($"Codigo: {areas.Codigo}, " + $"Mensaje: Problemas en {nameof(PutArea)}, {areas.Respuesta}");
             }
-            Log.Information(usuario.Respuesta);*/
-            return Ok(putArea);
+            return Ok(areas);
         }
     }
 }
