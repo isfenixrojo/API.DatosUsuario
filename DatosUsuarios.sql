@@ -1,4 +1,4 @@
-﻿CREATE  DATABASE DatosUsuario
+﻿CREATE DATABASE DatosUsuario
 GO
 
 USE DatosUsuario
@@ -111,7 +111,7 @@ GO
 -- =============================================
 -- [14052021][Usuario][Actualiza un registro de la tabla Usuarios mediante su Id]
 -- =============================================
-ALTER PROCEDURE [dbo].[Usp_UpdateUsuario]
+CREATE PROCEDURE [dbo].[Usp_UpdateUsuario]
 @IdUsuario INT, 
 @NombreUsuario VARCHAR(70), 
 @IdAreas INT, 
@@ -142,7 +142,6 @@ BEGIN
 END
 GO
 
-
 -- =============================================
 -- [23052021][Usuario][[Selecciona todos los registros de la tabla Areas]
 -- =============================================
@@ -154,11 +153,12 @@ BEGIN
 	FROM Areas
 	WHERE Activo = 1
 END
+GO
 
 -- =============================================
 -- [14052021][Usuario][Selecciona un registro de la tabla Areas mediante su Id]
 -- =============================================
-ALTER PROCEDURE [dbo].[Usp_SelectAreaId]
+CREATE PROCEDURE [dbo].[Usp_SelectAreaId]
 @IdAreas INT
 AS
 BEGIN
@@ -177,6 +177,7 @@ BEGIN
 	END
 END
 GO
+
 -- =============================================
 -- [23052021][Usuario][Inserta un nuevo registro en la tabla Areas]
 -- =============================================
@@ -199,6 +200,7 @@ BEGIN
 		SELECT ERROR_MESSAGE() AS Response, 400 AS Code
 	END CATCH
 END
+GO
 
 -- =============================================
 -- [23052021][Usuario][Actualiza un registro de la tabla Areas mediante su Id]
